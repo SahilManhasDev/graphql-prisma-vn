@@ -1,0 +1,46 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type Query {
+  me: User
+  movies(
+    search: String
+    sortField: String
+    sortOrder: String
+    filterYear: Int
+    skip: Int
+    take: Int
+  ): [Movie!]!
+}
+
+type Mutation {
+  signup(username: String!, email: String!, password: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  changePassword(currentPassword: String!, newPassword: String!): User
+  createMovie(input: MovieInput!): Movie
+  updateMovie(id: Int!, input: MovieInput!): Movie
+  deleteMovie(id: Int!): Boolean
+}
+
+type Movie {
+  id: Int!
+  movieName: String!
+  description: String
+  directorName: String
+  releaseDate: String 
+}
+
+input MovieInput {
+  movieName: String!
+  description: String
+  directorName: String
+  releaseDate: String 
+}

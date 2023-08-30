@@ -51,7 +51,7 @@ This creates a dist folder with compiled JavaScript files.
 ## Usage
 **Start the Server:**
     
-    ```bash
+    
     node dist/index.js
 
 Access GraphQL Playground:
